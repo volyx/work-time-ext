@@ -1,0 +1,17 @@
+{
+  "name": "Work Time",
+  "version": "1.0",
+  "description": "Parse your history, and define work time",
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "typedUrls.html",
+    "default_icon": "clock.png"
+  },
+  "background": {
+    "scripts": ["moment.js","background.js"]
+    // "persistent": false
+  },
+  "manifest_version": 2
+}
