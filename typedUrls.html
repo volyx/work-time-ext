@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <style>
     body {
-        min-width: 300px;
+        min-width: 360px;
     }
     </style>
     <!-- // <script src="js/ru.js"></script> -->
@@ -29,15 +29,11 @@
 
 <body>
     <h2>Work Time</h2>
-    <input type="search" ng-model="q" placeholder="filter ..." />
+    <!-- <input type="search" ng-model="q" placeholder="filter ..." /> -->
     <hr>
     <table class="tableSection" ng-controller="MainCtrl">
         <thead ng-if="results.length != 0">
             <tr>
-                <th>
-                    <span class="text"></span>
-
-                </th>
                 <th>
                     <span class="text">Day</span>
 
@@ -58,7 +54,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="(key, d) in data | orderBy : 'start' | filter:q as results" ng-animate=" 'animate' ">
-                <td>[{{$index + 1}}]</td>
                 <td>{{getDay(key)}}</td>
                 <td>{{getTime(d.start)}}</td>
                 <td>{{getTime(d.end)}}</td>

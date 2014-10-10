@@ -6,7 +6,7 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
 
     var firebase = new Firebase("https://intense-inferno-3808.firebaseio.com/");
 
-    chrome.storage.local.get('email', function(result) {
+    chrome.storage.sync.get('email', function(result) {
 
         if (chrome.runtime.lastError) {
             /* error */
@@ -26,17 +26,17 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
 
     $scope.getDay = function(day) {
         var dayOfYear = moment().dayOfYear(day);
-        return dayOfYear.format("MMMM Do");;
+        return dayOfYear.format("MMMM, D");;
     }
 
     $scope.getTime = function(time) {
         var t = moment(time);
-        return t.format("H:mm:ss");
+        return t.format("H[ч.] mm [мин.]");
     }
 
     $scope.getDuration = function(start, end) {
         var t = moment(end - start);
-        return t.format("H:mm");
+        return t.format("H[ч.] mm [мин.]");
     }
 
 });

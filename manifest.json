@@ -1,6 +1,6 @@
 {
     "name": "Work Time",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Define work time from chrome startup and shutdown time",
     "permissions": [
         "storage",
