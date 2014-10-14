@@ -12,17 +12,17 @@
     ],
     "browser_action": {
         "default_popup": "typedUrls.html",
-        "default_icon": "clock.png"
+        "default_icon": "img/clock.png"
     },
-    "background": {
-        "scripts": ["jquery-2.1.1.min.js",
-            "js/moment.js",
-            "js/firebase.js",
-            "oauth2/oauth2.js",
-            "oauth2/myauth.js",
-            "background.js"
-        ]
-    },
+    // "background": {
+    //     "scripts": [
+    //         "js/jquery-2.1.1.min.js",
+    //         "js/moment.js",
+    //         "js/firebase.js",
+    //         "oauth2/oauth2.js",
+    //         "js/background.js"
+    //     ]
+    // },
     "content_scripts": [{
         "matches": ["http://www.google.com/robots.txt*"],
         "js": ["oauth2/oauth2_inject.js"],

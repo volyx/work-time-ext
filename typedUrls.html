@@ -9,7 +9,7 @@
         min-width: 360px;
     }
     </style>
-    <!-- // <script src="js/ru.js"></script> -->
+    <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/ru.js"></script>
     <script src="js/angular.min.js"></script>
@@ -17,6 +17,12 @@
     <script src="js/angular-locale_ru-ru.js"></script>
 
 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+<!--
+    <script type="text/javascript" src="js/jquery.treegrid.js"></script>
+    <script type="text/javascript" src="js/jquery.treegrid.bootstrap3.js"></script>
+-->
     <!-- Firebase -->
     <script src="js/firebase.js"></script>
     <!-- AngularFire -->
@@ -25,13 +31,21 @@
     <!-- // <script src="oauth2/myauth.js"></script> -->
     <script src="js/app.js"></script>
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    
+
 </head>
 
 <body>
-    <h2>Work Time</h2>
+    <div class="container" ng-controller="MainCtrl">
+    <h3>Work Time</h3>
+    <div class="pull-right">
+        <small>{{loginset}}</small>
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>    
     <!-- <input type="search" ng-model="q" placeholder="filter ..." /> -->
     <hr>
-    <table class="tableSection" ng-controller="MainCtrl">
+    <table class="tree table ">
         <thead ng-if="results.length != 0">
             <tr>
                 <th>
@@ -53,14 +67,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key, d) in data | orderBy : 'start' | filter:q as results" ng-animate=" 'animate' ">
+            <tr ng-repeat="(key, d) in data | orderBy : 'start'" class="treegrid-1" ng-animate=" 'animate' ">
                 <td>{{getDay(key)}}</td>
                 <td>{{getTime(d.start)}}</td>
                 <td>{{getTime(d.end)}}</td>
                 <td>{{getDuration(d.start,d.end)}}</td>
             </tr>
         </tbody>
+        <tfoot>
+          <td colspan="4">
+
+            <a class="btn" href="#" ng-class="nextPageDisabledClass()"
+              ng-click="loadMore()">Load More</a>
+
+          </td>
+
+        </tfoot>
     </table>
 </body>
+</div>
 
 </html>
