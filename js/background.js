@@ -80,7 +80,6 @@ var googleAuth = new OAuth2('google', {
 });
 
 
-
 googleAuth.authorize(function() {
 
     // We should now have googleAuth.getAccessToken() returning a valid token value for us 

@@ -1,4 +1,3 @@
-
 var myApp = angular.module('myApp', ['ngAnimate', 'firebase']);
 
 moment.locale("ru");
@@ -7,19 +6,15 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
 
     $scope.itemsPerPage = 10;
     $scope.currentPage = 0;
-   
-
-    
 
     chrome.storage.sync.get('email', function(result) {
 
         if (chrome.runtime.lastError) {
             /* error */
             console.log('Login not set');
-            $scope.loginset = 'Login not set';
+
             return;
         }
-        $scope.loginset = 'Login succesfully';
 
         // $scope.total = Item.total();
 
@@ -29,11 +24,11 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
 
         $scope.usersRef.on('value', function(snapshot) {
             var count = 0;
-           snapshot.forEach(function() {
-               count++;
-           });
-           $scope.total = count;
-           //count is now safe to use.
+            snapshot.forEach(function() {
+                count++;
+            });
+            $scope.total = count;
+            //count is now safe to use.
         });
 
         // create an AngularFire reference to the data
@@ -43,8 +38,6 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
         var sync = $firebase($scope.usersRef);
         // download the data into a local object
         $scope.data = sync.$asObject();
-
-        console.log($scope.data);
 
     });
 
@@ -59,13 +52,13 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
     }
 
     $scope.getDuration = function(start, end) {
-        var t = moment(end - start);
-        return t.format("H[h.] mm [m.]");
-    }
-    // PAGINATION 
+            var t = moment(end - start);
+            return t.format("H[h.] mm [m.]");
+        }
+        // PAGINATION 
     $scope.loadMore = function() {
         $scope.currentPage++;
-        var sync = $firebase($scope.usersRef).startAt($scope.currentPage*$scope.itemsPerPage).limit($scope.itemsPerPage);
+        var sync = $firebase($scope.usersRef).startAt($scope.currentPage * $scope.itemsPerPage).limit($scope.itemsPerPage);
 
         var newData = sync.$asObject();
 
@@ -73,16 +66,14 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
 
     };
 
-     $scope.pageCount = function() {
-        return Math.ceil($scope.total/$scope.itemsPerPage);
+    $scope.pageCount = function() {
+        return Math.ceil($scope.total / $scope.itemsPerPage);
     };
 
-      $scope.nextPageDisabledClass = function() {
+    $scope.disabled = function() {
         console.log($scope.currentPage);
-        console.log($scope.pageCount()-1);
-        return $scope.currentPage === $scope.pageCount()-1 ? "disabled" : "";
-      };
+        console.log($scope.pageCount() - 1);
+        return $scope.currentPage === $scope.pageCount() - 1 ? true : false;
+    };
 
 });
-
-

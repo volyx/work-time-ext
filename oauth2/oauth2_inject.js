@@ -27,10 +27,6 @@ if (index > -1) {
 }
 
 
-alert('inject')
-
-
-
 // Also append the current URL to the params
 params += '&from=' + encodeURIComponent(url);
 // params += '&from=' + (url);
