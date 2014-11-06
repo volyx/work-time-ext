@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <style>
     body {
-        min-width: 380px;
+        min-width: 400px;
     }
     </style>
     <script src="js/jquery-2.1.1.min.js"></script>
@@ -67,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="(key, d) in data | orderBy : 'start'" class="treegrid-1" ng-animate=" 'animate' ">
+                <tr ng-repeat="(key, d) in data | orderBy:'key':true" class="treegrid-1" ng-animate=" 'animate' ">
                     <td>{{getDay(key)}}</td>
                     <td>{{getTime(d.start)}}</td>
                     <td>{{getTime(d.end)}}</td>

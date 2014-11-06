@@ -52,7 +52,9 @@ myApp.controller('MainCtrl', function($scope, $rootScope, $animate, $firebase) {
     }
 
     $scope.getDuration = function(start, end) {
-            var t = moment(end - start);
+            var e = moment(end);
+            var s = moment(start); 
+            var t = e.subtract(s);
             return t.format("H[h.] mm [m.]");
         }
         // PAGINATION 
